@@ -1,0 +1,90 @@
+<div class="prod">
+  <script>
+    function navigateToSingleProduct(id) {
+      console.log('id', id);
+      window.open('/produit?id=' + id);
+    }
+  </script>
+  
+
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+.prod{
+  background-image: url(../static/image/33614f27-9fca-4ccf-ba0a-72b0b8bc6e8a_maddi-bazzocco-UhrHTmVBzzE-unsplash_64f92e35-4e31-4f82-86d3-ee10b381851c.webp);
+  background-attachment: fixed;
+
+}
+  .par{
+    position: relative;
+    top: 20px;
+    left: 3%;
+  }
+.par h3 b{
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+ left: 20%;
+
+}
+  .product-container {
+    margin-top: 50px;
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+    cursor: pointer;
+  }
+  
+  .product-row {
+    width: fit-content;
+    display: flex;
+    column-gap: 2rem;
+    font-size: 0.7rem;
+    border: 2px solid rgb(55, 48, 151);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    left: 30px;
+    position: relative;
+    top: -20px;
+  
+  }
+
+  form {
+    position: relative;
+    padding:10px;
+    margin-top: 25px;
+    left:40px;
+    }
+    
+  
+</style>
+  
+<div class="par">
+  <h3 ><b>  La liste des Produits</b></h3> </div>
+  <form class="fo">
+    <input placeholder="Entrez la Wilaya..." name="search" img="" />
+    <button  type="submit">Rechercher</button>
+  </form>
+  <div class="product-container">
+    {% for row in products %}
+    <div class="product-row" onclick="navigateToSingleProduct({{ row.id}})" >
+      <div>
+        <h3>Nom du Produit</h3>
+        <label>{{ row.name }}</label>
+      </div>
+      <div>
+        <h3>Catégorie du Produit</h3>
+        <label>{{ row.category }}</label>
+      </div>
+      <div>
+        <h3>Wilaya du Produit</h3>
+        <label>{{ row.wilaya }}</label>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
